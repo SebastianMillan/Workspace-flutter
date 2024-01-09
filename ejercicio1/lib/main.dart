@@ -1,6 +1,5 @@
+import 'package:ejercicio1/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_world/screen/home_screen.dart';
-import 'package:hello_world/widget/my_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Mi primera APP',
+        title: 'Ejercicio 1',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         home: Container(
-          color: const Color.fromARGB(255, 238, 201, 201),
+          color: Colors.blueAccent,
           alignment: Alignment.center,
           child: const HomeScreen(),
         ));
