@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
         ),
         home: Container(
           color: Colors.blueAccent,
-          alignment: Alignment.center,
           child: const HomeScreen(),
         ));
   }
