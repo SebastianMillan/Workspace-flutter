@@ -1,5 +1,6 @@
 import 'package:ejercicio3/actor_item.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,54 +14,78 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Text(
-            'Best Iranian Actors and Actresses',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Text('Best Iranian Actors and Actresses',
+              style: GoogleFonts.cinzel(
+                textStyle:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              )),
+          Text('March 2020',
+              style: GoogleFonts.cinzel(
+                textStyle:
+                    const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+              )),
+          Expanded(
+            child: ListView(scrollDirection: Axis.horizontal, children: const [
+              ActorItem(
+                  urlImagen:
+                      'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ngoitknM6hw8fffLywyvjzy6Iti.jpg',
+                  nombre: 'Barry',
+                  apellido: 'Keoghan'),
+              ActorItem(
+                  urlImagen:
+                      'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/pqdR8zqAWF87chGYlbdYr0YfC7g.jpg',
+                  nombre: 'Jeremy',
+                  apellido: 'Piven'),
+              ActorItem(
+                  urlImagen:
+                      'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wrPmsC9YATcnyAxvXEdGshccbqU.jpg',
+                  nombre: 'Sydney',
+                  apellido: 'Sweeney'),
+              ActorItem(
+                  urlImagen:
+                      'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/jPsLqiYGSofU4s6BjrxnefMfabb.jpg',
+                  nombre: 'Morgan',
+                  apellido: 'Freeman')
+            ]),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            'March 2020',
-            style: TextStyle(fontSize: 20),
-          ),
-          ListView(
-            shrinkWrap:,
-            scrollDirection: Axis.horizontal, children: const [
-            ActorItem(
-                urlImagen:
-                    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ngoitknM6hw8fffLywyvjzy6Iti.jpg',
-                nombre: 'Barry',
-                apellido: 'Keoghan'),
-            ActorItem(
-                urlImagen:
-                    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ngoitknM6hw8fffLywyvjzy6Iti.jpg',
-                nombre: 'Barry',
-                apellido: 'Keoghan'),
-            ActorItem(
-                urlImagen:
-                    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ngoitknM6hw8fffLywyvjzy6Iti.jpg',
-                nombre: 'Barry',
-                apellido: 'Keoghan'),
-            ActorItem(
-                urlImagen:
-                    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ngoitknM6hw8fffLywyvjzy6Iti.jpg',
-                nombre: 'Barry',
-                apellido: 'Keoghan')
-          ]),
-          const Row(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
-                children: [Icon(Icons.home), Text('Home')],
+                children: [
+                  const Icon(Icons.home),
+                  Text(
+                    'Home',
+                    style: GoogleFonts.aDLaMDisplay(),
+                  )
+                ],
               ),
               Column(
-                children: [Icon(Icons.camera), Text('Home')],
+                children: [
+                  const Icon(Icons.camera),
+                  Text(
+                    'Booking',
+                    style: GoogleFonts.aDLaMDisplay(),
+                  )
+                ],
               ),
               Column(
-                children: [Icon(Icons.save), Text('Home')],
+                children: [
+                  const Icon(Icons.save),
+                  Text(
+                    'List',
+                    style: GoogleFonts.aDLaMDisplay(),
+                  )
+                ],
               ),
               Column(
-                children: [Icon(Icons.save), Text('Home')],
+                children: [
+                  const Icon(Icons.account_circle),
+                  Text(
+                    'Profile',
+                    style: GoogleFonts.aDLaMDisplay(),
+                  )
+                ],
               )
             ],
           )
