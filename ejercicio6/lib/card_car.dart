@@ -43,7 +43,7 @@ class CardCar extends StatelessWidget {
             Center(
                 child: Image.network(
               urlImagen,
-              width: 20,
+              width: 250,
             )),
             Text(
               tipoCoche,
