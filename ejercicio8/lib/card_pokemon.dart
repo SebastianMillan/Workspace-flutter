@@ -1,8 +1,8 @@
-import 'package:ejercicio8/pokemon/pokemon.dart';
+import 'package:ejercicio8/pokemon_response/result.dart';
 import 'package:flutter/material.dart';
 
 class CardPokemon extends StatelessWidget {
-  final Pokemon pokemon;
+  final Result pokemon;
   const CardPokemon({super.key, required this.pokemon});
 
   @override
