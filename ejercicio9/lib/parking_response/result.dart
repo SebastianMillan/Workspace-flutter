@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'geo_point2d.dart';
-import 'geo_shape.dart';
 
-class Result {
+class Parking {
   String? nombre;
   String? direccion;
   int? idAparcamiento;
@@ -14,10 +13,9 @@ class Result {
   dynamic ultimaMod;
   int? objectid;
   double? ocupacion;
-  GeoShape? geoShape;
   GeoPoint2d? geoPoint2d;
 
-  Result({
+  Parking({
     this.nombre,
     this.direccion,
     this.idAparcamiento,
@@ -28,11 +26,10 @@ class Result {
     this.ultimaMod,
     this.objectid,
     this.ocupacion,
-    this.geoShape,
     this.geoPoint2d,
   });
 
-  factory Result.fromMap(Map<String, dynamic> data) => Result(
+  factory Parking.fromMap(Map<String, dynamic> data) => Parking(
         nombre: data['nombre'] as String?,
         direccion: data['direccion'] as String?,
         idAparcamiento: data['id_aparcamiento'] as int?,
@@ -43,9 +40,6 @@ class Result {
         ultimaMod: data['ultima_mod'] as dynamic,
         objectid: data['objectid'] as int?,
         ocupacion: (data['ocupacion'] as num?)?.toDouble(),
-        geoShape: data['geo_shape'] == null
-            ? null
-            : GeoShape.fromMap(data['geo_shape'] as Map<String, dynamic>),
         geoPoint2d: data['geo_point_2d'] == null
             ? null
             : GeoPoint2d.fromMap(data['geo_point_2d'] as Map<String, dynamic>),
@@ -62,15 +56,17 @@ class Result {
         'ultima_mod': ultimaMod,
         'objectid': objectid,
         'ocupacion': ocupacion,
-        'geo_shape': geoShape?.toMap(),
         'geo_point_2d': geoPoint2d?.toMap(),
       };
 
   /// `dart:convert`
   ///
   /// Parses the string and returns the resulting Json object as [Result].
-  factory Result.fromJson(String data) {
-    return Result.fromMap(json.decode(data) as Map<String, dynamic>);
+  factory Parking.fromJson(Map<String, dynamic> json) {
+    return Parking(
+        nombre: json['nombre'],
+        direccion: json['direccion'],
+        plazastota: json['plazastota']);
   }
 
   /// `dart:convert`

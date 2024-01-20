@@ -4,7 +4,7 @@ import 'result.dart';
 
 class ParkingResponse {
   int? totalCount;
-  List<Result>? results;
+  List<Parking>? results;
 
   ParkingResponse({this.totalCount, this.results});
 
@@ -12,7 +12,7 @@ class ParkingResponse {
     return ParkingResponse(
       totalCount: data['total_count'] as int?,
       results: (data['results'] as List<dynamic>?)
-          ?.map((e) => Result.fromMap(e as Map<String, dynamic>))
+          ?.map((e) => Parking.fromMap(e as Map<String, dynamic>))
           .toList(),
     );
   }
