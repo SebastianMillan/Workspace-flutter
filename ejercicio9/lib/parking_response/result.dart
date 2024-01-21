@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'geo_point2d.dart';
 
 class Parking {
@@ -37,7 +36,7 @@ class Parking {
         tipo: data['tipo'] as int?,
         plazastota: data['plazastota'] as int?,
         plazaslibr: data['plazaslibr'] as int?,
-        ultimaMod: data['ultima_mod'] as dynamic,
+        ultimaMod: data['ultima_mod'],
         objectid: data['objectid'] as int?,
         ocupacion: (data['ocupacion'] as num?)?.toDouble(),
         geoPoint2d: data['geo_point_2d'] == null
@@ -59,18 +58,42 @@ class Parking {
         'geo_point_2d': geoPoint2d?.toMap(),
       };
 
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [Result].
   factory Parking.fromJson(Map<String, dynamic> json) {
     return Parking(
-        nombre: json['nombre'],
-        direccion: json['direccion'],
-        plazastota: json['plazastota']);
+      nombre: json['nombre'],
+      direccion: json['direccion'],
+      idAparcamiento: json['id_aparcamiento'],
+      numeropol: json['numeropol'],
+      tipo: json['tipo'],
+      plazastota: json['plazastota'],
+      plazaslibr: json['plazaslibr'],
+      ultimaMod: json['ultima_mod'],
+      objectid: json['objectid'],
+      ocupacion: (json['ocupacion'] as num?)?.toDouble(),
+      geoPoint2d: json['geo_point_2d'] == null
+          ? null
+          : GeoPoint2d.fromMap(json['geo_point_2d']),
+    );
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [Result] to a JSON string.
-  String toJson() => json.encode(toMap());
+  String toJson() {
+    final Map<String, dynamic> data = {
+      'nombre': nombre,
+      'direccion': direccion,
+      'id_aparcamiento': idAparcamiento,
+      'numeropol': numeropol,
+      'tipo': tipo,
+      'plazastota': plazastota,
+      'plazaslibr': plazaslibr,
+      'ultima_mod': ultimaMod,
+      'objectid': objectid,
+      'ocupacion': ocupacion,
+      'geo_point_2d': geoPoint2d?.toMap(),
+    };
+
+    // Remove null values from the map
+    data.removeWhere((key, value) => value == null);
+
+    return json.encode(data);
+  }
 }
