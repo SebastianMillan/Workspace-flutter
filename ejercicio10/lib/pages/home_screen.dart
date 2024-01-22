@@ -11,8 +11,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     PeopleScreen(),
     MovieScreen()
@@ -27,12 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: const Color.fromARGB(255, 103, 103, 103),
+        backgroundColor: const Color.fromARGB(255, 4, 4, 4),
+        unselectedItemColor: Color.fromARGB(255, 145, 145, 145),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+        selectedItemColor: Color.fromARGB(255, 255, 255, 255),
         selectedFontSize: 15,
         selectedIconTheme: const IconThemeData(size: 35),
         onTap: _onItemTapped,
