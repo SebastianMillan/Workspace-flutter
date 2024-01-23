@@ -1,4 +1,4 @@
-import 'package:ejercicio10/models/people.dart';
+import 'package:ejercicio10/models/people_response/people.dart';
 import 'package:flutter/material.dart';
 
 class PeopleCard extends StatelessWidget {
@@ -8,9 +8,6 @@ class PeopleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      color: const Color.fromARGB(255, 5, 5, 5),
       surfaceTintColor: Colors.white,
       shadowColor: Colors.grey,
       child: Padding(

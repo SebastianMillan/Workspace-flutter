@@ -31,15 +31,18 @@ class _MovieWidgetState extends State<MovieWidget> {
           if (snapshot.hasData) {
             enabled = enabled;
             return Skeletonizer(
-              enabled: false,
-              child: ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: MovieCard(movie: snapshot.data![index]));
-                  }),
-            );
+                enabled: false,
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, // number of items in each row
+                            mainAxisSpacing: 2.0, // spacing between rows
+                            crossAxisSpacing: 2.0, // spacing between columns
+                            mainAxisExtent: 400),
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return MovieCard(movie: snapshot.data![index]);
+                    }));
           } else {
             return const Center(child: CircularProgressIndicator());
           }

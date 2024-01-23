@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:ejercicio10/models/people.dart';
+import 'package:ejercicio10/models/people_response/people.dart';
+import 'package:ejercicio10/models/people_response/people_response.dart';
 import 'package:ejercicio10/people_card.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -32,16 +33,29 @@ class _PeopleWidgetState extends State<PeopleWidget> {
             enabled = false;
             return Skeletonizer(
               enabled: enabled,
-              child: ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: PeopleCard(people: snapshot.data![index]));
-                  }),
+              child: SizedBox(
+                width: 400,
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // number of items in each row
+                      mainAxisSpacing: 8.0, // spacing between rows
+                      crossAxisSpacing: 8.0, // spacing between columns
+                    ),
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: PeopleCard(people: snapshot.data![index]));
+                    }),
+              ),
             );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+                child: Text(
+              snapshot.toString(),
+              style: const TextStyle(color: Colors.white),
+            ));
           }
         });
   }
@@ -51,10 +65,9 @@ class _PeopleWidgetState extends State<PeopleWidget> {
         'https://api.themoviedb.org/3/person/popular?api_key=$tmdbApiKey'));
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> jsonData = jsonDecode(response.body);
-      List<dynamic> data = jsonData['results'];
-      List<People> peopleList = data.map((e) => People.fromJson(e)).toList();
-      return peopleList;
+      ActorListResponse actorResponse =
+          ActorListResponse.fromJson(response.body);
+      return actorResponse.results;
     }
     return result;
   }
