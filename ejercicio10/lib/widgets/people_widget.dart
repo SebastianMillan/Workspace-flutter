@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:ejercicio10/models/people_response/people.dart';
 import 'package:ejercicio10/models/people_response/people_response.dart';
 import 'package:ejercicio10/people_card.dart';
@@ -33,22 +32,17 @@ class _PeopleWidgetState extends State<PeopleWidget> {
             enabled = false;
             return Skeletonizer(
               enabled: enabled,
-              child: SizedBox(
-                width: 400,
-                child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // number of items in each row
-                      mainAxisSpacing: 8.0, // spacing between rows
-                      crossAxisSpacing: 8.0, // spacing between columns
-                    ),
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: PeopleCard(people: snapshot.data![index]));
-                    }),
-              ),
+              child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // number of items in each row
+                      mainAxisSpacing: 2.0, // spacing between rows
+                      crossAxisSpacing: 2.0, // spacing between columns
+                      mainAxisExtent: 400 // spacing between columns
+                      ),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return PeopleCard(people: snapshot.data![index]);
+                  }),
             );
           } else {
             return Center(

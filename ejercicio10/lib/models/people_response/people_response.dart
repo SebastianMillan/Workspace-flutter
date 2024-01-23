@@ -27,7 +27,7 @@ class ActorListResponse {
 
   Future<Map<dynamic, dynamic>> toMap() async => {
         'page': page,
-        'results': results?.map((e) => e.toMap()).toList(),
+        'results': results.map((e) => e.toMap()).toList(),
         'total_pages': totalPages,
         'total_results': totalResults,
       };

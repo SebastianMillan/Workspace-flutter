@@ -20,7 +20,7 @@ class MovieCard extends StatelessWidget {
       child: Card(
         color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(8.0),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(

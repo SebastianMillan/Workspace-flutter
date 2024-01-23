@@ -29,9 +29,9 @@ class _MovieWidgetState extends State<MovieWidget> {
         future: result,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            enabled = enabled;
+            enabled = false;
             return Skeletonizer(
-                enabled: false,
+                enabled: enabled,
                 child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
