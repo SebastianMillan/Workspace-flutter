@@ -45,11 +45,7 @@ class _PeopleWidgetState extends State<PeopleWidget> {
                   }),
             );
           } else {
-            return Center(
-                child: Text(
-              snapshot.toString(),
-              style: const TextStyle(color: Colors.white),
-            ));
+            return const Center(child: CircularProgressIndicator());
           }
         });
   }

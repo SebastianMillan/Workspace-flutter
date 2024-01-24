@@ -15,7 +15,7 @@ class MovieDetail extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Column(
+          child: ListView(
             children: [
               Center(
                   child: SizedBox(
@@ -60,11 +60,13 @@ class MovieDetail extends StatelessWidget {
                   )
                 ],
               ),
-              Text(movie.releaseDate!,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic)),
+              Center(
+                child: Text(movie.releaseDate!,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic)),
+              ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(movie.overview!,
