@@ -28,48 +28,51 @@ class _MovieVideosWidgetState extends State<MovieVideosWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: result,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            enabled = false;
-            return Skeletonizer(
-                enabled: enabled,
-                child: SizedBox(
-                  width: 500,
-                  height: 280,
-                  child: GridView.builder(
-                      scrollDirection: Axis.horizontal,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1, // number of items in each row
-                              mainAxisSpacing: 2.0, // spacing between rows
-                              crossAxisSpacing: 2.0, // spacing between columns
-                              mainAxisExtent: 400),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => PeopleDetail(
-                      people: people,
-                    )));
+      future: result,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          enabled = false; // Consider using setState to update the state
+          return Skeletonizer(
+            enabled: enabled,
+            child: SizedBox(
+              width: 500,
+              height: 240,
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  mainAxisSpacing: 2.0,
+                  crossAxisSpacing: 2.0,
+                  mainAxisExtent: 400,
+                ),
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VideoPlayerScreen(
+                              keyVideo: snapshot.data![index].key!,
+                            ),
+                          ),
+                        );
+                      },
+                      child: VideoPlayerCard(
+                        keyVideo: snapshot.data![index].key!,
+                      ));
+                },
+              ),
+            ),
+          );
+        } else {
+          return const Text(
+            "No tiene videos",
+            style: TextStyle(color: Colors.white),
+          );
+        }
       },
-      child: Image.network(
-                          'https://img.youtube.com/vi/' +
-                              snapshot.data![index].key! +
-                              '/maxresdefault.jpg',
-                          fit: BoxFit.fill,
-                        )
     );
-          } else {
-            return const Text(
-              "No tiene videos",
-              style: TextStyle(color: Colors.white),
-            );
-          }
-        });
   }
 
   Future<List<MovieVideo>> getData() async {

@@ -16,7 +16,7 @@ class KnownForCard extends StatelessWidget {
           child: Image.network(
             width: 200,
             'https://image.tmdb.org/t/p/w500/' + knownFor.posterPath!,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
         ),
       ),

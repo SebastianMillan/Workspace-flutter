@@ -38,7 +38,7 @@ class _MovieWidgetState extends State<MovieWidget> {
                             crossAxisCount: 2, // number of items in each row
                             mainAxisSpacing: 2.0, // spacing between rows
                             crossAxisSpacing: 2.0, // spacing between columns
-                            mainAxisExtent: 400),
+                            mainAxisExtent: 340),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return MovieCard(movie: snapshot.data![index]);
