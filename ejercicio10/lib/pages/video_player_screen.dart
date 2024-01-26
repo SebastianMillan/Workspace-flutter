@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
   final String keyVideo;
@@ -15,14 +14,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   void initState() {
-    _controller = YoutubePlayerController(
-      initialVideoId: widget.keyVideo,
-      flags: const YoutubePlayerFlags(
-          mute: false,
-          autoPlay: true,
-          disableDragSeek: true,
-          loop: false,
-          enableCaption: false),
+    _controller = YoutubePlayerController.fromVideoId(
+      videoId: widget.keyVideo,
+      autoPlay: false,
+      params: const YoutubePlayerParams(showFullscreenButton: true),
     );
     super.initState();
   }
@@ -37,7 +32,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       ),
       body: YoutubePlayer(
         controller: _controller,
-        showVideoProgressIndicator: true,
       ),
     );
   }
