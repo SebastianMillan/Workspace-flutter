@@ -39,6 +39,8 @@ dependencies:
   flutter_inappwebview: ^5.8.0
   percent_indicator: ^4.0.1
   youtube_player_iframe: ^4.0.4
+  url_launcher: ^6.2.4
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
