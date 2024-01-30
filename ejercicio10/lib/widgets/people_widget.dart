@@ -53,7 +53,6 @@ class _PeopleWidgetState extends State<PeopleWidget> {
   Future<List<People>> getData() async {
     final response = await http.get(Uri.parse(
         'https://api.themoviedb.org/3/person/popular?api_key=$tmdbApiKey'));
-
     if (response.statusCode == 200) {
       ActorListResponse actorResponse =
           ActorListResponse.fromJson(response.body);
