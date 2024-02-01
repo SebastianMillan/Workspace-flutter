@@ -23,13 +23,14 @@ class _AccountWidgetState extends State<AccountWidget> {
 
   @override
   void initState() {
-    super.initState();
     reqTok = getRequestToken();
     result = getData();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return FutureBuilder(
         future: result,
         builder: (context, snapshot) {
