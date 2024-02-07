@@ -30,7 +30,6 @@ class _AccountWidgetState extends State<AccountWidget> {
 
   @override
   Widget build(BuildContext context) {
-    
     return FutureBuilder(
         future: result,
         builder: (context, snapshot) {
